@@ -17,7 +17,7 @@ public class AuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
-            throws ServletException, IOException {
+            throws ServletException, IOException{
 
         System.out.println("DEBUG - Requisicao: " + request.getRequestURL().toString());
         if(request.getHeader("Authorization") != null){

@@ -25,6 +25,9 @@ public class Pedido {
     @Column(name="valor_producao_produto")
     private Double valorProducao;
 
+    @Column(name="valor_total")
+    private Double valorTotal;
+
     @Column(name="data_pedido", length = 45)
     private String data;
 
@@ -99,5 +102,13 @@ public class Pedido {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public Double getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 }

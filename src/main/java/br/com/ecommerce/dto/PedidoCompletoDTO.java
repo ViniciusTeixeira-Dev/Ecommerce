@@ -9,6 +9,7 @@ public class PedidoCompletoDTO {
     private Integer quantidade;
     private Double valorVenda;
     private Double valorProducao;
+    private Double valorTotal;
     private String data;
     private String status;
     private String nomeProduto;
@@ -31,6 +32,7 @@ public class PedidoCompletoDTO {
         pedido.setQuantidade(this.getQuantidade());
         pedido.setValorVenda(this.getValorVenda());
         pedido.setValorProducao(this.getValorProducao());
+        pedido.setValorTotal(pedido.getValorVenda() * pedido.getQuantidade());
         pedido.setData(this.getData());
         pedido.setStatus(this.getStatus());
         pedido.setNome(this.getNomeProduto());
@@ -179,5 +181,17 @@ public class PedidoCompletoDTO {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public Double getValorTotal() {
+        if(valorTotal == null){
+            setValorTotal();
+        }
+        return valorTotal;
+    }
+
+
+    public void setValorTotal() {
+        this.valorTotal = getValorVenda() * getQuantidade();
     }
 }

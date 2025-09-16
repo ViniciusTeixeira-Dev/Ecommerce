@@ -1,5 +1,6 @@
 package br.com.ecommerce.controller;
 
+import br.com.ecommerce.api.pix.PixService;
 import br.com.ecommerce.dto.PedidoCompletoDTO;
 import br.com.ecommerce.models.DadosPedido;
 import br.com.ecommerce.models.Pedido;
@@ -16,10 +17,14 @@ public class PedidoController {
     @Autowired
     IPedidoService service;
 
+    @Autowired
+    PixService pixService;
+
     @PostMapping("/checkout")
-    public ResponseEntity<Pedido> novoPedido (@RequestBody PedidoCompletoDTO pedidoDTO){
+    public ResponseEntity<String> novoPedido (@RequestBody PedidoCompletoDTO pedidoDTO){
         Pedido res = service.novoPedido(pedidoDTO);
-        return ResponseEntity.ok(res);
+        String qrCode = pixService.criarQrCode(pedidoDTO);
+        return ResponseEntity.ok(qrCode);
 
     }
 }
