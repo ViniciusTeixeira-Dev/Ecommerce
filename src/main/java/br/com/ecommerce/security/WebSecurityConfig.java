@@ -20,8 +20,7 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/registro").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/checkout").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v2/pix").permitAll()
-                .requestMatchers(HttpMethod.GET, "/api/v2/pix/listar").permitAll()
+                .requestMatchers( "/webhook/**").permitAll()
                 .anyRequest().authenticated().and()
 
                 .addFilterBefore(new AuthFilter(), UsernamePasswordAuthenticationFilter.class);
