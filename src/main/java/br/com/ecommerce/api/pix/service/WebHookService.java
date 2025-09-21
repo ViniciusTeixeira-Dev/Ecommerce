@@ -1,6 +1,7 @@
 package br.com.ecommerce.api.pix.service;
 
 import br.com.ecommerce.api.pix.PixConfig;
+import br.com.ecommerce.enums.Links;
 import br.com.efi.efisdk.EfiPay;
 import br.com.efi.efisdk.exceptions.EfiPayException;
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public class WebHookService {
         params.put("chave", chavePix);
 
         JSONObject body = new JSONObject();
-        body.put("webhookUrl", "https://97b2b3b64e15.ngrok-free.app/webhook");
+        body.put("webhookUrl", Links.NGROK_TUNNEL.getUrl() + "/webhook");
 
         String operacao = "pixConfigWebhook";
 
