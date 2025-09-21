@@ -27,34 +27,6 @@ public class PedidoCompletoDTO {
     private String complemento;
 
 
-    public Pedido toPedido() {
-        Pedido pedido = new Pedido();
-        pedido.setQuantidade(this.getQuantidade());
-        pedido.setValorVenda(this.getValorVenda());
-        pedido.setValorProducao(this.getValorProducao());
-        pedido.setValorTotal(pedido.getValorVenda() * pedido.getQuantidade());
-        pedido.setData(this.getData());
-        pedido.setStatus(this.getStatus());
-        pedido.setNome(this.getNomeProduto());
-
-        DadosPedido dadosPedido = new DadosPedido();
-        dadosPedido.setNome(this.getNomeDestinatario());
-        dadosPedido.setCpf(this.getCpfDestinatario());
-        dadosPedido.setGmail(this.getGmailDestinatario());
-        dadosPedido.setTelefone(this.getTelefoneDestinatario());
-        dadosPedido.setCep(this.getCep());
-        dadosPedido.setEndereco(this.getEndereco());
-        dadosPedido.setNumero(this.getNumero());
-        dadosPedido.setUf(this.getUf());
-        dadosPedido.setCidade(this.getCidade());
-        dadosPedido.setComplemento(this.getComplemento());
-
-        pedido.setDadosPedido(dadosPedido);
-        dadosPedido.setPedido(pedido);
-
-        return pedido;
-    }
-
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -77,6 +49,14 @@ public class PedidoCompletoDTO {
 
     public void setValorProducao(Double valorProducao) {
         this.valorProducao = valorProducao;
+    }
+
+    public Double getValorTotal() {
+        return valorVenda * quantidade;
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
     }
 
     public String getData() {
@@ -181,17 +161,5 @@ public class PedidoCompletoDTO {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
-    }
-
-    public Double getValorTotal() {
-        if(valorTotal == null){
-            setValorTotal();
-        }
-        return valorTotal;
-    }
-
-
-    public void setValorTotal() {
-        this.valorTotal = getValorVenda() * getQuantidade();
     }
 }
