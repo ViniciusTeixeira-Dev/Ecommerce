@@ -33,7 +33,7 @@ public class WebHookService {
         params.put("chave", chavePix);
 
         JSONObject body = new JSONObject();
-        body.put("webhookUrl", "https://1a47f9e58923.ngrok-free.app/webhook");
+        body.put("webhookUrl", "https://97b2b3b64e15.ngrok-free.app/webhook");
 
         String operacao = "pixConfigWebhook";
 

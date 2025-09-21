@@ -55,19 +55,10 @@ public class PixService {
         JSONObject res = executarOperacao("pixCreateImmediateCharge", body);
 
         if (res != null) {
-            if(res.has("loc")){
-                JSONObject loc = (JSONObject) res.get("loc");
-                String linkQrCode = loc.get("location").toString();
-                return linkQrCode;
-            }
-            else if(res.has("location")){
-                String linkQrCode = res.get("location").toString();
-                return linkQrCode;
-            }
-            String linkQrcode = res.get("location").toString();
-            return linkQrcode;
+            return res.toString(4);
+
         } else {
-            return "";
+            return "{}";
         }
     }
 
