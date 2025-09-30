@@ -1,7 +1,6 @@
 package br.com.ecommerce.dto;
 
 import br.com.ecommerce.models.DadosPedido;
-import br.com.ecommerce.models.Pedido;
 
 public class PedidoCompletoDTO {
 

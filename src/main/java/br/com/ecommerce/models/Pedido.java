@@ -1,7 +1,8 @@
 package br.com.ecommerce.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="tbl_pedidos")
@@ -12,30 +13,49 @@ public class Pedido {
     @Column(name="id_pedido")
     private Integer id_pedido;
 
-    @OneToOne(mappedBy = "pedido", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private DadosPedido dadosPedido;
+    @Column(name="nome_destinatario", length = 100)
+    private String nomeDestinatario;
 
-    @Column(name="quantidade_produto")
-    private Integer quantidade;
+    @Column(name="telefone_destinatario", length = 45)
+    private String telefoneDestinatario;
 
-    @Column(name="valor_venda_produto")
-    private Double valorVenda;
+    @Column(name="gmail_destinatario", length = 100)
+    private String gmailDestinatario;
 
-    @Column(name="valor_producao_produto")
-    private Double valorProducao;
+    @Column(name="cpf_destinatario", length = 45)
+    private String cpfDestinatario;
 
-    @Column(name="valor_total")
-    private Double valorTotal;
+    @Column(name="cep_destinatario", length = 45)
+    private String cepDestinatario;
 
-    @Column(name="data_pedido", length = 45)
+    @Column(name="endereco_destinatario", length = 45)
+    private String enderecoDestinatario;
+
+    @Column(name="numero_endereco", length = 45)
+    private String numeroEndereco;
+
+    @Column(name="uf_destinatario", length = 2)
+    private String ufDestinatario;
+
+    @Column(name="cidade_destinatario", length = 45)
+    private String cidadeDestinatario;
+
+    @Column(name="complemento_endereco", length = 45, nullable = true)
+    private String complementoEndereco;
+
+    @Column(name="data_pedido")
     private String data;
 
     @Column(name="status_pedido", length = 45)
     private String status;
 
-    @Column(name="nome_produto", length = 45)
-    private String nome;
+    @Column(name="valor_total_pedido")
+    private Double valorTotal;
+
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<ItemPedido> itens;
+
 
 
 
@@ -48,36 +68,84 @@ public class Pedido {
         this.id_pedido = id_pedido;
     }
 
-    public DadosPedido getDadosPedido() {
-        return dadosPedido;
+    public String getNomeDestinatario() {
+        return nomeDestinatario;
     }
 
-    public void setDadosPedido(DadosPedido dadosPedido) {
-        this.dadosPedido = dadosPedido;
+    public void setNomeDestinatario(String nomeDestinatario) {
+        this.nomeDestinatario = nomeDestinatario;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public String getTelefoneDestinatario() {
+        return telefoneDestinatario;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setTelefoneDestinatario(String telefoneDestinatario) {
+        this.telefoneDestinatario = telefoneDestinatario;
     }
 
-    public Double getValorVenda() {
-        return valorVenda;
+    public String getGmailDestinatario() {
+        return gmailDestinatario;
     }
 
-    public void setValorVenda(Double valorVenda) {
-        this.valorVenda = valorVenda;
+    public void setGmailDestinatario(String gmailDestinatario) {
+        this.gmailDestinatario = gmailDestinatario;
     }
 
-    public Double getValorProducao() {
-        return valorProducao;
+    public String getCpfDestinatario() {
+        return cpfDestinatario;
     }
 
-    public void setValorProducao(Double valorProducao) {
-        this.valorProducao = valorProducao;
+    public void setCpfDestinatario(String cpfDestinatario) {
+        this.cpfDestinatario = cpfDestinatario;
+    }
+
+    public String getCepDestinatario() {
+        return cepDestinatario;
+    }
+
+    public void setCepDestinatario(String cepDestinatario) {
+        this.cepDestinatario = cepDestinatario;
+    }
+
+    public String getEnderecoDestinatario() {
+        return enderecoDestinatario;
+    }
+
+    public void setEnderecoDestinatario(String enderecoDestinatario) {
+        this.enderecoDestinatario = enderecoDestinatario;
+    }
+
+    public String getNumeroEndereco() {
+        return numeroEndereco;
+    }
+
+    public void setNumeroEndereco(String numeroEndereco) {
+        this.numeroEndereco = numeroEndereco;
+    }
+
+    public String getUfDestinatario() {
+        return ufDestinatario;
+    }
+
+    public void setUfDestinatario(String ufDestinatario) {
+        this.ufDestinatario = ufDestinatario;
+    }
+
+    public String getCidadeDestinatario() {
+        return cidadeDestinatario;
+    }
+
+    public void setCidadeDestinatario(String cidadeDestinatario) {
+        this.cidadeDestinatario = cidadeDestinatario;
+    }
+
+    public String getComplementoEndereco() {
+        return complementoEndereco;
+    }
+
+    public void setComplementoEndereco(String complementoEndereco) {
+        this.complementoEndereco = complementoEndereco;
     }
 
     public String getData() {
@@ -96,19 +164,19 @@ public class Pedido {
         this.status = status;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public Double getValorTotal() {
         return valorTotal;
     }
 
     public void setValorTotal(Double valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
     }
 }

@@ -1,7 +1,7 @@
 package br.com.ecommerce.enums;
 
 public enum Links {
-        NGROK_TUNNEL("https://97b2b3b64e15.ngrok-free.app");
+        NGROK_TUNNEL("https://a650a1286d95.ngrok-free.app");
 
     private final String url;
 

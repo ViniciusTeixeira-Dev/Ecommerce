@@ -58,7 +58,7 @@ public class PixService {
             return res.toString(4);
 
         } else {
-            return "{}";
+            return null;
         }
     }
 
