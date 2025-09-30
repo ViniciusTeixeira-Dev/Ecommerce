@@ -4,57 +4,18 @@ import java.util.List;
 
 public class PedidoCompletoDTO {
 
-
-    private Integer idPedido;
-    private Double valorTotalPedido;
-    private String data;
-    private String status;
     private String nomeDestinatario;
     private String cpfDestinatario;
     private String gmailDestinatario;
     private String telefoneDestinatario;
-    private String cepDestinatario;
-    private String enderecoDestinatario;
+    private String cep;
+    private String endereco;
     private String numeroEndereco;
-    private String ufDestinatario;
-    private String cidadeDestinatario;
+    private String uf;
+    private String cidade;
     private String complementoEndereco;
     private List<ItensPedidoDTO> itens;
 
-
-    public Integer getIdPedido() {
-        return idPedido;
-    }
-
-    public void setIdPedido(Integer idPedido) {
-        this.idPedido = idPedido;
-    }
-
-    public Double getValorTotalPedido() {
-        if (itens == null) {
-            return 0.0;
-        }
-        return itens.stream()
-                .mapToDouble(ItensPedidoDTO::getValorTotalItem)
-                .sum();
-    }
-
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
 
     public String getNomeDestinatario() {
         return nomeDestinatario;
@@ -88,20 +49,20 @@ public class PedidoCompletoDTO {
         this.telefoneDestinatario = telefoneDestinatario;
     }
 
-    public String getCepDestinatario() {
-        return cepDestinatario;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCepDestinatario(String cepDestinatario) {
-        this.cepDestinatario = cepDestinatario;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public String getEnderecoDestinatario() {
-        return enderecoDestinatario;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEnderecoDestinatario(String enderecoDestinatario) {
-        this.enderecoDestinatario = enderecoDestinatario;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getNumeroEndereco() {
@@ -112,20 +73,20 @@ public class PedidoCompletoDTO {
         this.numeroEndereco = numeroEndereco;
     }
 
-    public String getUfDestinatario() {
-        return ufDestinatario;
+    public String getUf() {
+        return uf;
     }
 
-    public void setUfDestinatario(String ufDestinatario) {
-        this.ufDestinatario = ufDestinatario;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
-    public String getCidadeDestinatario() {
-        return cidadeDestinatario;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCidadeDestinatario(String cidadeDestinatario) {
-        this.cidadeDestinatario = cidadeDestinatario;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getComplementoEndereco() {
