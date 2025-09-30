@@ -33,11 +33,11 @@ public class PedidoImpl implements IPedidoService {
         pedido.setCpfDestinatario(dto.getCpfDestinatario());
         pedido.setGmailDestinatario(dto.getGmailDestinatario());
         pedido.setTelefoneDestinatario(dto.getTelefoneDestinatario());
-        pedido.setCepDestinatario(dto.getCepDestinatario());
-        pedido.setEnderecoDestinatario(dto.getEnderecoDestinatario());
+        pedido.setCep(dto.getCep());
+        pedido.setEndereco(dto.getEndereco());
         pedido.setNumeroEndereco(dto.getNumeroEndereco());
-        pedido.setUfDestinatario(dto.getUfDestinatario());
-        pedido.setCidadeDestinatario(dto.getCidadeDestinatario());
+        pedido.setUf(dto.getUf());
+        pedido.setCidade(dto.getCidade());
         pedido.setComplementoEndereco(dto.getComplementoEndereco());
         pedido.setData(String.valueOf(LocalDate.now()));
         pedido.setStatus("Aguardando Pagamento");
@@ -53,9 +53,9 @@ public class PedidoImpl implements IPedidoService {
             ItensPedido itemPedido = new ItensPedido();
 
             itemPedido.setQuantidade(itemDto.getQuantidade());
-            itemPedido.setValorVenda(itemDto.getValorUnitarioVenda());
+            itemPedido.setValorVenda(produto.getValorVenda());
 
-            double subtotal = itemDto.getQuantidade() * itemDto.getValorUnitarioVenda();
+            double subtotal = itemDto.getQuantidade() * produto.getValorVenda();
             itemPedido.setValorTotal(subtotal);
 
             itemPedido.setProduto(produto);

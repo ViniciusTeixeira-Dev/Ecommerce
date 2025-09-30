@@ -26,11 +26,14 @@ public class PedidoController {
     @PostMapping("/checkout")
     public ResponseEntity<String> novoPedido (@RequestBody PedidoCompletoDTO pedidoDTO){
         Pedido res = service.novoPedido(pedidoDTO);
-        String qrCode = pixService.criarCobranca(pedidoDTO);
-        if(qrCode != null){
-            webHookService.configurarWebhook();
-            return ResponseEntity.ok(qrCode);
+        if(res != null){
+            String qrCode = pixService.criarCobranca(res);
+            if(qrCode != null){
+                webHookService.configurarWebhook();
+                return ResponseEntity.ok(qrCode);
+            }
         }
+
         return ResponseEntity.badRequest().build();
 
     }

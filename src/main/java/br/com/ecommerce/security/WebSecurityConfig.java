@@ -21,6 +21,7 @@ public class WebSecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.POST, "/checkout").permitAll()
                 .requestMatchers( "/webhook/**").permitAll()
+                .requestMatchers("/gerenciamento/**").permitAll()
                 .anyRequest().authenticated().and()
 
                 .addFilterBefore(new AuthFilter(), UsernamePasswordAuthenticationFilter.class);

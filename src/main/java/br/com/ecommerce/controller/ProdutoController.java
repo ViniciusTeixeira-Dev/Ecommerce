@@ -22,7 +22,7 @@ public class ProdutoController {
         return ResponseEntity.ok(produto);
     }
 
-    @PostMapping("/gerenciamento/novo")
+    @PostMapping("/gerenciamento/novoproduto")
     public ResponseEntity<Produto> cadastrarNovoProduto(@RequestBody Produto novo) throws Exception{
         Produto res = service.cadastrar(novo);
 
@@ -33,7 +33,7 @@ public class ProdutoController {
         return ResponseEntity.badRequest().build();
     }
 
-    @PutMapping("/gerenciamento/editar/{id}")
+    @PutMapping("/gerenciamento/{id}")
     public ResponseEntity<Produto> editarProduto(@RequestBody Produto produto,@PathVariable Integer id){
         if(produto.getId() == null){
             produto.setId(id);
@@ -45,7 +45,7 @@ public class ProdutoController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/gerenciamento/remover/{id}")
+    @DeleteMapping("/gerenciamento/{id}")
     public ResponseEntity<Produto> excluirProduto(@PathVariable Integer id){
         boolean res = service.excluir(id);
         if(res){

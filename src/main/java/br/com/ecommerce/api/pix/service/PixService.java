@@ -2,6 +2,7 @@ package br.com.ecommerce.api.pix.service;
 
 import br.com.ecommerce.api.pix.PixConfig;
 import br.com.ecommerce.dto.PedidoCompletoDTO;
+import br.com.ecommerce.models.Pedido;
 import br.com.efi.efisdk.EfiPay;
 import br.com.efi.efisdk.exceptions.EfiPayException;
 import org.json.JSONException;
@@ -30,7 +31,7 @@ public class PixService {
         this.configuracoes.put("debug", pixConfig.debug());
     }
 
-    public String criarCobranca(PedidoCompletoDTO pedido){
+    public String criarCobranca(Pedido pedido){
         JSONObject body = new JSONObject();
 
         JSONObject calendario = new JSONObject();
@@ -44,7 +45,7 @@ public class PixService {
 
         JSONObject valor = new JSONObject();
         DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
-        double valorTotal = pedido.getValorTotalPedido();
+        double valorTotal = pedido.getValorTotal();
         String valorFormatado = df.format(valorTotal);
         valor.put("original", valorFormatado);
         body.put("valor", valor);
