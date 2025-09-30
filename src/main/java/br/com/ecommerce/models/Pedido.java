@@ -54,10 +54,7 @@ public class Pedido {
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<ItemPedido> itens;
-
-
-
+    private List<ItensPedido> itens;
 
 
     public Integer getId_pedido() {
@@ -172,11 +169,11 @@ public class Pedido {
         this.valorTotal = valorTotal;
     }
 
-    public List<ItemPedido> getItens() {
+    public List<ItensPedido> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemPedido> itens) {
+    public void setItens(List<ItensPedido> itens) {
         this.itens = itens;
     }
 }

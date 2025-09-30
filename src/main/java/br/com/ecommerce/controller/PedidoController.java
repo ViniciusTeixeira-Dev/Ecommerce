@@ -3,6 +3,7 @@ package br.com.ecommerce.controller;
 import br.com.ecommerce.api.pix.service.PixService;
 import br.com.ecommerce.api.pix.service.WebHookService;
 import br.com.ecommerce.dto.PedidoCompletoDTO;
+import br.com.ecommerce.models.Pedido;
 import br.com.ecommerce.service.pedido.IPedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
