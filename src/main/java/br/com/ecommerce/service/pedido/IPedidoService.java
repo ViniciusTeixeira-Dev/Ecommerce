@@ -1,7 +1,7 @@
 package br.com.ecommerce.service.pedido;
 
 import br.com.ecommerce.dto.PedidoCompletoDTO;
-import br.com.ecommerce.models.DadosPedido;
+import br.com.ecommerce.models.Pedido;
 
 public interface IPedidoService {
 

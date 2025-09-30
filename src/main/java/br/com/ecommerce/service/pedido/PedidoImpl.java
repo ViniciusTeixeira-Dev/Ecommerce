@@ -1,10 +1,20 @@
 package br.com.ecommerce.service.pedido;
 
 import br.com.ecommerce.dao.PedidoDAO;
+import br.com.ecommerce.dao.ProdutoDAO;
+import br.com.ecommerce.dto.ItensPedidoDTO;
 import br.com.ecommerce.dto.PedidoCompletoDTO;
-import br.com.ecommerce.models.DadosPedido;
+import br.com.ecommerce.models.ItensPedido;
+import br.com.ecommerce.models.Pedido;
+import br.com.ecommerce.models.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class PedidoImpl implements IPedidoService {
@@ -12,32 +22,52 @@ public class PedidoImpl implements IPedidoService {
     @Autowired
     PedidoDAO dao;
 
+    @Autowired
+    ProdutoDAO produtoDAO;
+
     @Override
     public Pedido novoPedido(PedidoCompletoDTO dto) {
+
         Pedido pedido = new Pedido();
-        pedido.setQuantidade(dto.getQuantidade());
-        pedido.setValorVenda(dto.getValorVenda());
-        pedido.setValorProducao(dto.getValorProducao());
-        pedido.setValorTotal(dto.getValorVenda() * dto.getQuantidade());
-        pedido.setData(dto.getData());
-        pedido.setStatus(dto.getStatus());
-        pedido.setNome(dto.getNomeProduto());
+        pedido.setNomeDestinatario(dto.getNomeDestinatario());
+        pedido.setCpfDestinatario(dto.getCpfDestinatario());
+        pedido.setGmailDestinatario(dto.getGmailDestinatario());
+        pedido.setTelefoneDestinatario(dto.getTelefoneDestinatario());
+        pedido.setCepDestinatario(dto.getCepDestinatario());
+        pedido.setEnderecoDestinatario(dto.getEnderecoDestinatario());
+        pedido.setNumeroEndereco(dto.getNumeroEndereco());
+        pedido.setUfDestinatario(dto.getUfDestinatario());
+        pedido.setCidadeDestinatario(dto.getCidadeDestinatario());
+        pedido.setComplementoEndereco(dto.getComplementoEndereco());
+        pedido.setData(String.valueOf(LocalDate.now()));
+        pedido.setStatus("Aguardando Pagamento");
 
-        DadosPedido dadosPedido = new DadosPedido();
-        dadosPedido.setNome(dto.getNomeDestinatario());
-        dadosPedido.setCpf(dto.getCpfDestinatario());
-        dadosPedido.setGmail(dto.getGmailDestinatario());
-        dadosPedido.setTelefone(dto.getTelefoneDestinatario());
-        dadosPedido.setCep(dto.getCep());
-        dadosPedido.setEndereco(dto.getEndereco());
-        dadosPedido.setNumero(dto.getNumero());
-        dadosPedido.setUf(dto.getUf());
-        dadosPedido.setCidade(dto.getCidade());
-        dadosPedido.setComplemento(dto.getComplemento());
 
-        pedido.setDadosPedido(dadosPedido);
-        dadosPedido.setPedido(pedido);
+        List<ItensPedido> itensDoPedido = new ArrayList<>();
+        double valorTotal = 0.0;
 
+        for (ItensPedidoDTO itemDto : dto.getItens()) {
+            Produto produto = produtoDAO.findById(itemDto.getIdProduto())
+                    .orElseThrow(() -> new NoSuchElementException("Produto com ID " + itemDto.getIdProduto() + " não encontrado."));
+
+            ItensPedido itemPedido = new ItensPedido();
+
+            itemPedido.setQuantidade(itemDto.getQuantidade());
+            itemPedido.setValorVenda(itemDto.getValorUnitarioVenda());
+
+            double subtotal = itemDto.getQuantidade() * itemDto.getValorUnitarioVenda();
+            itemPedido.setValorTotal(subtotal);
+
+            itemPedido.setProduto(produto);
+            itemPedido.setPedido(pedido);
+
+            itensDoPedido.add(itemPedido);
+
+            valorTotal += subtotal;
+        }
+
+        pedido.setItens(itensDoPedido);
+        pedido.setValorTotal(valorTotal);
         return dao.save(pedido);
     }
 

@@ -1,61 +1,41 @@
 package br.com.ecommerce.dto;
 
-import br.com.ecommerce.models.DadosPedido;
+import java.util.List;
 
 public class PedidoCompletoDTO {
 
-    // Campos do Pedido
-    private Integer quantidade;
-    private Double valorVenda;
-    private Double valorProducao;
-    private Double valorTotal;
+
+    private Integer idPedido;
+    private Double valorTotalPedido;
     private String data;
     private String status;
-    private String nomeProduto;
-
-    // Campos de DadosPedido
     private String nomeDestinatario;
     private String cpfDestinatario;
     private String gmailDestinatario;
     private String telefoneDestinatario;
-    private String cep;
-    private String endereco;
-    private Integer numero;
-    private String uf;
-    private String cidade;
-    private String complemento;
+    private String cepDestinatario;
+    private String enderecoDestinatario;
+    private String numeroEndereco;
+    private String ufDestinatario;
+    private String cidadeDestinatario;
+    private String complementoEndereco;
+    private List<ItensPedidoDTO> itens;
 
 
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getIdPedido() {
+        return idPedido;
     }
 
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setIdPedido(Integer idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public Double getValorVenda() {
-        return valorVenda;
+    public Double getValorTotalPedido() {
+        return valorTotalPedido;
     }
 
-    public void setValorVenda(Double valorVenda) {
-        this.valorVenda = valorVenda;
-    }
-
-    public Double getValorProducao() {
-        return valorProducao;
-    }
-
-    public void setValorProducao(Double valorProducao) {
-        this.valorProducao = valorProducao;
-    }
-
-    public Double getValorTotal() {
-        return valorVenda * quantidade;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValorTotalPedido(Double valorTotalPedido) {
+        this.valorTotalPedido = valorTotalPedido;
     }
 
     public String getData() {
@@ -72,14 +52,6 @@ public class PedidoCompletoDTO {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
     }
 
     public String getNomeDestinatario() {
@@ -114,51 +86,59 @@ public class PedidoCompletoDTO {
         this.telefoneDestinatario = telefoneDestinatario;
     }
 
-    public String getCep() {
-        return cep;
+    public String getCepDestinatario() {
+        return cepDestinatario;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
+    public void setCepDestinatario(String cepDestinatario) {
+        this.cepDestinatario = cepDestinatario;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEnderecoDestinatario() {
+        return enderecoDestinatario;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEnderecoDestinatario(String enderecoDestinatario) {
+        this.enderecoDestinatario = enderecoDestinatario;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public String getNumeroEndereco() {
+        return numeroEndereco;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
+    public void setNumeroEndereco(String numeroEndereco) {
+        this.numeroEndereco = numeroEndereco;
     }
 
-    public String getUf() {
-        return uf;
+    public String getUfDestinatario() {
+        return ufDestinatario;
     }
 
-    public void setUf(String uf) {
-        this.uf = uf;
+    public void setUfDestinatario(String ufDestinatario) {
+        this.ufDestinatario = ufDestinatario;
     }
 
-    public String getCidade() {
-        return cidade;
+    public String getCidadeDestinatario() {
+        return cidadeDestinatario;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
+    public void setCidadeDestinatario(String cidadeDestinatario) {
+        this.cidadeDestinatario = cidadeDestinatario;
     }
 
-    public String getComplemento() {
-        return complemento;
+    public String getComplementoEndereco() {
+        return complementoEndereco;
     }
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
+    public void setComplementoEndereco(String complementoEndereco) {
+        this.complementoEndereco = complementoEndereco;
+    }
+
+    public List<ItensPedidoDTO> getItens() {
+        return itens;
+    }
+
+    public void setItens(List<ItensPedidoDTO> itens) {
+        this.itens = itens;
     }
 }
