@@ -44,7 +44,7 @@ public class PixService {
 
         JSONObject valor = new JSONObject();
         DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
-        double valorTotal = pedido.getValorTotal();
+        double valorTotal = pedido.getValorTotalPedido();
         String valorFormatado = df.format(valorTotal);
         valor.put("original", valorFormatado);
         body.put("valor", valor);

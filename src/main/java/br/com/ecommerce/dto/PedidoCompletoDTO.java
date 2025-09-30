@@ -31,12 +31,14 @@ public class PedidoCompletoDTO {
     }
 
     public Double getValorTotalPedido() {
-        return valorTotalPedido;
+        if (itens == null) {
+            return 0.0;
+        }
+        return itens.stream()
+                .mapToDouble(ItensPedidoDTO::getValorTotalItem)
+                .sum();
     }
 
-    public void setValorTotalPedido(Double valorTotalPedido) {
-        this.valorTotalPedido = valorTotalPedido;
-    }
 
     public String getData() {
         return data;
