@@ -25,36 +25,39 @@ public class Pedido {
     @Column(name="cpf_destinatario", length = 45)
     private String cpfDestinatario;
 
-    @Column(name="cep_destinatario", length = 45)
-    private String cepDestinatario;
+    @Column(name="cep", length = 45)
+    private String cep;
 
-    @Column(name="endereco_destinatario", length = 45)
-    private String enderecoDestinatario;
+    @Column(name="endereco", length = 45)
+    private String endereco;
 
     @Column(name="numero_endereco", length = 45)
     private String numeroEndereco;
 
-    @Column(name="uf_destinatario", length = 2)
-    private String ufDestinatario;
+    @Column(name="uf", length = 2)
+    private String uf;
 
-    @Column(name="cidade_destinatario", length = 45)
-    private String cidadeDestinatario;
+    @Column(name="cidade", length = 45)
+    private String cidade;
 
     @Column(name="complemento_endereco", length = 45, nullable = true)
     private String complementoEndereco;
 
-    @Column(name="data_pedido")
+    @Column(name="data")
     private String data;
 
-    @Column(name="status_pedido", length = 45)
+    @Column(name="status", length = 45)
     private String status;
 
-    @Column(name="valor_total_pedido")
+    @Column(name="valor_total")
     private Double valorTotal;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
     private List<ItensPedido> itens;
+
+
+
 
 
     public Integer getId_pedido() {
@@ -97,20 +100,20 @@ public class Pedido {
         this.cpfDestinatario = cpfDestinatario;
     }
 
-    public String getCepDestinatario() {
-        return cepDestinatario;
+    public String getCep() {
+        return cep;
     }
 
-    public void setCepDestinatario(String cepDestinatario) {
-        this.cepDestinatario = cepDestinatario;
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 
-    public String getEnderecoDestinatario() {
-        return enderecoDestinatario;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEnderecoDestinatario(String enderecoDestinatario) {
-        this.enderecoDestinatario = enderecoDestinatario;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getNumeroEndereco() {
@@ -121,20 +124,20 @@ public class Pedido {
         this.numeroEndereco = numeroEndereco;
     }
 
-    public String getUfDestinatario() {
-        return ufDestinatario;
+    public String getUf() {
+        return uf;
     }
 
-    public void setUfDestinatario(String ufDestinatario) {
-        this.ufDestinatario = ufDestinatario;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
-    public String getCidadeDestinatario() {
-        return cidadeDestinatario;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCidadeDestinatario(String cidadeDestinatario) {
-        this.cidadeDestinatario = cidadeDestinatario;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     public String getComplementoEndereco() {
