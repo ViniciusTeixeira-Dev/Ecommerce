@@ -24,6 +24,20 @@ public class Produto {
     @Column(name="estoque_produto", length = 45)
     private Integer estoque;
 
+    @Column(name="is_ativo")
+    private Integer isAtivo;
+
+
+
+
+
+    public Integer getIsAtivo() {
+        return isAtivo;
+    }
+
+    public void setIsAtivo(Integer isAtivo) {
+        this.isAtivo = isAtivo;
+    }
 
     public Integer getId() {
         return id;

@@ -29,12 +29,5 @@ public class ProdutoServiceImpl implements IProdutoService{
     }
 
 
-    @Override
-    public boolean excluir(Integer id) {
-        if(dao.existsById(id)){
-            dao.deleteById(id);
-            return true;
-        }
-        return false;
-    }
+  
 }

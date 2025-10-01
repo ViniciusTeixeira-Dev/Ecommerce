@@ -9,5 +9,4 @@ public interface IProdutoService {
     public Produto cadastrar(Produto novo);
     public Produto alterar(Produto produto);
     public List<Produto> buscarPeloNome(String nome);
-    public boolean excluir(Integer id);
 }

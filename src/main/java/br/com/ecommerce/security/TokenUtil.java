@@ -29,7 +29,7 @@ public class TokenUtil {
             String jwtToken = Jwts.builder()
                     .subject(dadosLogin.getLogin())
                     .issuer(EMISSOR)
-                    .claim("papel", dadosLogin.getTipo().name())
+                    .claim("ROLE", "ROLE_" + dadosLogin.getTipo())
                     .expiration(new Date(System.currentTimeMillis() + EXPIRATION))
                     .signWith(key)
                     .compact();
@@ -54,7 +54,7 @@ public class TokenUtil {
                 String subject = claims.getSubject();
                 String issuer = claims.getIssuer();
                 Date exp = claims.getExpiration();
-                String role = claims.get("papel").toString();
+                String role = claims.get("ROLE").toString();
 
                 if(issuer.equals(EMISSOR) && subject.length() > 0 && exp.after(new Date(System.currentTimeMillis()))){
                     Authentication auth = new UsernamePasswordAuthenticationToken(subject, null, Collections.singletonList(new SimpleGrantedAuthority(role)));

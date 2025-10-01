@@ -24,7 +24,7 @@ public class Usuario {
 
     @Column(name="is_admin")
     @Enumerated(EnumType.ORDINAL)
-    private TipoUsuario tipo;
+    private TipoUsuario tipo = TipoUsuario.USUARIO;
 
     public Integer getId() {
         return id;

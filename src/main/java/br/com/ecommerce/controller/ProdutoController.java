@@ -45,12 +45,5 @@ public class ProdutoController {
         return ResponseEntity.badRequest().build();
     }
 
-    @DeleteMapping("/gerenciamento/{id}")
-    public ResponseEntity<Produto> excluirProduto(@PathVariable Integer id){
-        boolean res = service.excluir(id);
-        if(res){
-            return ResponseEntity.ok().build();
-        }
-        return ResponseEntity.notFound().build();
-    }
+
 }
