@@ -15,6 +15,7 @@ public class ProdutoServiceImpl implements IProdutoService{
 
     @Override
     public Produto cadastrar(Produto novo) {
+        novo.setIsAtivo(1);
         return dao.save(novo);
     }
 
@@ -29,5 +30,4 @@ public class ProdutoServiceImpl implements IProdutoService{
     }
 
 
-  
 }

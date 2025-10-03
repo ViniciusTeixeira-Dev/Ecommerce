@@ -28,8 +28,8 @@ public class Pedido {
     @Column(name="cep", length = 45)
     private String cep;
 
-    @Column(name="endereco", length = 45)
-    private String endereco;
+    @Column(name="logradouro", length = 45)
+    private String logradouro;
 
     @Column(name="numero_endereco", length = 45)
     private String numeroEndereco;
@@ -108,12 +108,12 @@ public class Pedido {
         this.cep = cep;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     public String getNumeroEndereco() {

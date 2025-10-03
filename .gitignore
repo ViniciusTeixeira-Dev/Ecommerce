@@ -35,3 +35,7 @@ build/
 .local
 **/aplication-local.properties
 *.png
+
+
+### test ###
+/test

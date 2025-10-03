@@ -8,7 +8,6 @@ import br.com.ecommerce.models.ItensPedido;
 import br.com.ecommerce.models.Pedido;
 import br.com.ecommerce.models.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -34,7 +33,7 @@ public class PedidoImpl implements IPedidoService {
         pedido.setGmailDestinatario(dto.getGmailDestinatario());
         pedido.setTelefoneDestinatario(dto.getTelefoneDestinatario());
         pedido.setCep(dto.getCep());
-        pedido.setEndereco(dto.getEndereco());
+        pedido.setLogradouro(dto.getEndereco());
         pedido.setNumeroEndereco(dto.getNumeroEndereco());
         pedido.setUf(dto.getUf());
         pedido.setCidade(dto.getCidade());
@@ -47,15 +46,15 @@ public class PedidoImpl implements IPedidoService {
         double valorTotal = 0.0;
 
         for (ItensPedidoDTO itemDto : dto.getItens()) {
-            Produto produto = produtoDAO.findById(itemDto.getIdProduto())
-                    .orElseThrow(() -> new NoSuchElementException("Produto com ID " + itemDto.getIdProduto() + " não encontrado."));
+            Produto produto = produtoDAO.findById(itemDto.idProduto())
+                    .orElseThrow(() -> new NoSuchElementException("Produto com ID " + itemDto.idProduto() + " não encontrado."));
 
             ItensPedido itemPedido = new ItensPedido();
 
-            itemPedido.setQuantidade(itemDto.getQuantidade());
+            itemPedido.setQuantidade(itemDto.quantidade());
             itemPedido.setValorVenda(produto.getValorVenda());
 
-            double subtotal = itemDto.getQuantidade() * produto.getValorVenda();
+            double subtotal = itemDto.quantidade() * produto.getValorVenda();
             itemPedido.setValorTotal(subtotal);
 
             itemPedido.setProduto(produto);

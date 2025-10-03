@@ -7,6 +7,7 @@ import io.jsonwebtoken.security.Keys;
 import br.com.ecommerce.models.Usuario;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.catalina.User;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,7 +22,9 @@ public class TokenUtil {
 
     public static final String  EMISSOR = "JWToken";
     public static final long    EXPIRATION = 24*60*60*1000;
-    public static final String  SECRET_KEY = "4312341414141414141414143435667576";
+
+    @Value("${SECRET_KEY}")
+    public static String SECRET_KEY;
 
     public static JWToken encode(Usuario dadosLogin){
         try{
