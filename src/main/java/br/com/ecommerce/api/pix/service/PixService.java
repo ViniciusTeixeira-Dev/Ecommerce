@@ -1,7 +1,6 @@
 package br.com.ecommerce.api.pix.service;
 
 import br.com.ecommerce.api.pix.PixConfig;
-import br.com.ecommerce.dto.PedidoCompletoDTO;
 import br.com.ecommerce.models.Pedido;
 import br.com.efi.efisdk.EfiPay;
 import br.com.efi.efisdk.exceptions.EfiPayException;
@@ -39,8 +38,8 @@ public class PixService {
         body.put("calendario", calendario);
 
         JSONObject devedor = new JSONObject();
-        devedor.put("cpf", pedido.getCpfDestinatario());
-        devedor.put("nome", pedido.getNomeDestinatario());
+        devedor.put("cpf", pedido.getCpf());
+        devedor.put("nome", pedido.getNome());
         body.put("devedor", devedor);
 
         JSONObject valor = new JSONObject();

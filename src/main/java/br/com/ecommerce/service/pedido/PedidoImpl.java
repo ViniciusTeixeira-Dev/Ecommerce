@@ -28,16 +28,18 @@ public class PedidoImpl implements IPedidoService {
     public Pedido novoPedido(PedidoCompletoDTO dto) {
 
         Pedido pedido = new Pedido();
-        pedido.setNomeDestinatario(dto.getNomeDestinatario());
-        pedido.setCpfDestinatario(dto.getCpfDestinatario());
-        pedido.setGmailDestinatario(dto.getGmailDestinatario());
-        pedido.setTelefoneDestinatario(dto.getTelefoneDestinatario());
-        pedido.setCep(dto.getCep());
-        pedido.setLogradouro(dto.getEndereco());
-        pedido.setNumeroEndereco(dto.getNumeroEndereco());
-        pedido.setUf(dto.getUf());
-        pedido.setCidade(dto.getCidade());
-        pedido.setComplementoEndereco(dto.getComplementoEndereco());
+        pedido.setNome(dto.DadosContato().nome());
+        pedido.setCpf(dto.DadosContato().cpf());
+        pedido.setEmail(dto.DadosContato().email());
+        pedido.setTelefone(dto.DadosContato().telefone());
+
+        pedido.setCep(dto.DadosEntrega().cep());
+        pedido.setLogradouro(dto.DadosEntrega().logradouro());
+        pedido.setNumero(dto.DadosEntrega().numero());
+        pedido.setUf(dto.DadosEntrega().uf());
+        pedido.setCidade(dto.DadosEntrega().cidade());
+        pedido.setComplemento(dto.DadosEntrega().complemento());
+
         pedido.setData(String.valueOf(LocalDate.now()));
         pedido.setStatus("Aguardando Pagamento");
 
@@ -45,7 +47,7 @@ public class PedidoImpl implements IPedidoService {
         List<ItensPedido> itensDoPedido = new ArrayList<>();
         double valorTotal = 0.0;
 
-        for (ItensPedidoDTO itemDto : dto.getItens()) {
+        for (ItensPedidoDTO itemDto : dto.itens()) {
             Produto produto = produtoDAO.findById(itemDto.idProduto())
                     .orElseThrow(() -> new NoSuchElementException("Produto com ID " + itemDto.idProduto() + " não encontrado."));
 

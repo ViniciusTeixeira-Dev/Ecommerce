@@ -14,16 +14,16 @@ public class Pedido {
     private Integer id_pedido;
 
     @Column(name="nome_destinatario", length = 100)
-    private String nomeDestinatario;
+    private String nome;
 
     @Column(name="telefone_destinatario", length = 45)
-    private String telefoneDestinatario;
+    private String telefone;
 
-    @Column(name="gmail_destinatario", length = 100)
-    private String gmailDestinatario;
+    @Column(name="email_destinatario", length = 100)
+    private String email;
 
     @Column(name="cpf_destinatario", length = 45)
-    private String cpfDestinatario;
+    private String cpf;
 
     @Column(name="cep", length = 45)
     private String cep;
@@ -31,8 +31,8 @@ public class Pedido {
     @Column(name="logradouro", length = 45)
     private String logradouro;
 
-    @Column(name="numero_endereco", length = 45)
-    private String numeroEndereco;
+    @Column(name="numero", length = 45)
+    private String numero;
 
     @Column(name="uf", length = 2)
     private String uf;
@@ -40,8 +40,8 @@ public class Pedido {
     @Column(name="cidade", length = 45)
     private String cidade;
 
-    @Column(name="complemento_endereco", length = 45, nullable = true)
-    private String complementoEndereco;
+    @Column(name="complemento", length = 45, nullable = true)
+    private String complemento;
 
     @Column(name="data")
     private String data;
@@ -59,7 +59,6 @@ public class Pedido {
 
 
 
-
     public Integer getId_pedido() {
         return id_pedido;
     }
@@ -68,36 +67,36 @@ public class Pedido {
         this.id_pedido = id_pedido;
     }
 
-    public String getNomeDestinatario() {
-        return nomeDestinatario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeDestinatario(String nomeDestinatario) {
-        this.nomeDestinatario = nomeDestinatario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getTelefoneDestinatario() {
-        return telefoneDestinatario;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setTelefoneDestinatario(String telefoneDestinatario) {
-        this.telefoneDestinatario = telefoneDestinatario;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
-    public String getGmailDestinatario() {
-        return gmailDestinatario;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGmailDestinatario(String gmailDestinatario) {
-        this.gmailDestinatario = gmailDestinatario;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCpfDestinatario() {
-        return cpfDestinatario;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfDestinatario(String cpfDestinatario) {
-        this.cpfDestinatario = cpfDestinatario;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getCep() {
@@ -116,12 +115,12 @@ public class Pedido {
         this.logradouro = logradouro;
     }
 
-    public String getNumeroEndereco() {
-        return numeroEndereco;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumeroEndereco(String numeroEndereco) {
-        this.numeroEndereco = numeroEndereco;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getUf() {
@@ -140,12 +139,12 @@ public class Pedido {
         this.cidade = cidade;
     }
 
-    public String getComplementoEndereco() {
-        return complementoEndereco;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setComplementoEndereco(String complementoEndereco) {
-        this.complementoEndereco = complementoEndereco;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
     public String getData() {
