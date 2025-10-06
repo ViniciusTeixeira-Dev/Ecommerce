@@ -13,6 +13,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+    private final AuthFilter authFilter;
+
+    public WebSecurityConfig(AuthFilter authFilter) {
+        this.authFilter = authFilter;
+    }
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf().disable()
@@ -24,7 +30,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/gerenciamento/**").hasRole("ADMIN")
                 .anyRequest().authenticated().and()
 
-                .addFilterBefore(new AuthFilter(), UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }

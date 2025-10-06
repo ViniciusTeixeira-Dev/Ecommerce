@@ -15,6 +15,9 @@ public class UsuarioServiceImpl implements IUsuarioService{
     @Autowired
     UsuarioDAO dao;
 
+    @Autowired
+    TokenUtil tokenUtil;
+
     @Override
     public Usuario novoUsuario(Usuario usuario) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -30,7 +33,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         if(encoder.matches(dto.senha(), res.getSenha())){
-            return TokenUtil.encode(res);
+            return tokenUtil.encode(res);
         }
         return null;
     }

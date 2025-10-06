@@ -5,28 +5,32 @@ import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import br.com.ecommerce.models.Usuario;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.catalina.User;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.security.Key;
-import java.util.Collection;
+
 import java.util.Collections;
 import java.util.Date;
 
+@Service
 public class TokenUtil {
 
     public static final String  EMISSOR = "JWToken";
     public static final long    EXPIRATION = 24*60*60*1000;
 
     @Value("${SECRET_KEY}")
-    public static String SECRET_KEY;
+    public String SECRET_KEY;
 
-    public static JWToken encode(Usuario dadosLogin){
+
+    public JWToken encode(Usuario dadosLogin){
         try{
             Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
             String jwtToken = Jwts.builder()
@@ -45,7 +49,7 @@ public class TokenUtil {
         return null;
     }
 
-    public static Authentication decode(HttpServletRequest request){
+    public Authentication decode(HttpServletRequest request){
         try{
             String token = request.getHeader("Authorization");
             if(token != null){
