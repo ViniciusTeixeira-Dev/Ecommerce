@@ -92,9 +92,6 @@ This E-commerce API allows the creation of a complete online store system, provi
   * QR Code generation for payments.  
   * Integration with EFI API for automatic transaction confirmation.  
 
-* **Orders and History:**  
-  * Record of user orders.  
-  * Query of payment status via PIX.  
 
 ## 🛣️ API Routes (Backend Examples)
 
