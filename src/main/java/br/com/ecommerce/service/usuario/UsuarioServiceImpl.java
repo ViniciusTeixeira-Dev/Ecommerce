@@ -2,6 +2,7 @@ package br.com.ecommerce.service.usuario;
 
 import br.com.ecommerce.dao.UsuarioDAO;
 import br.com.ecommerce.dto.LoginDTO;
+import br.com.ecommerce.enums.TipoUsuario;
 import br.com.ecommerce.models.Usuario;
 import br.com.ecommerce.security.JWToken;
 import br.com.ecommerce.security.TokenUtil;
@@ -24,6 +25,7 @@ public class UsuarioServiceImpl implements IUsuarioService{
 
         String novaSenha = encoder.encode(usuario.getSenha());
         usuario.setSenha(novaSenha);
+        usuario.setTipo(TipoUsuario.USUARIO);
         return dao.save(usuario);
     }
 
